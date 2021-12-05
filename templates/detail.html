@@ -5,7 +5,7 @@
 {% block content %}
 
     <h1>{{object.title}}</h1>
-    <small>By - {{object.author.first_name}} {{object.author.last_name}}</small>
+    <small>By - {{object.author.first_name}} {{object.author.last_name}} <a href="{% url 'update' object.pk %}">Edit</a></small> 
     <hr>
     <p>{{object.body}}</p>
     <br><br>

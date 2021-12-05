@@ -7,4 +7,6 @@ urlpatterns = [
     path('', home.as_view(), name='home'),
     path('post/<int:pk>', article_detail.as_view(), name='detail'),
     path('add/', article_add.as_view(), name='add'),
+    path('update/<int:pk>', article_update.as_view(), name='update'),
+    
 ]

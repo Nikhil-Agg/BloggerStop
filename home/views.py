@@ -19,6 +19,10 @@ class article_add(CreateView):
     form_class = PostForm
     template_name = 'home/add.html'
 
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
 class article_update(LoginRequiredMixin, UpdateView):
     model = Post
     form_class = EditForm

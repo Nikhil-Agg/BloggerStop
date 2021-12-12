@@ -5,9 +5,9 @@
 {% block content %}
 
     <h1>{{object.title}}</h1>
-    <small>By - {{object.author.first_name}} {{object.author.last_name}} </small> 
+    <small><strong>By - {{object.author.first_name}} {{object.author.last_name}} </strong></small> 
     <hr>
-    <p>{{object.body}}</p>
+    <p>{{object.body|safe}}</p>
     <a href="{% url 'update' object.pk %}" class="btn btn-primary">Edit</a>
     <a href="{% url 'delete' object.pk %}" class="btn btn-danger">Delete</a>
     <br><br>

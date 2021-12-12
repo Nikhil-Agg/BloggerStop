@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post
 from .forms import *
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class home(ListView):
     model = Post
@@ -18,12 +19,14 @@ class article_add(CreateView):
     form_class = PostForm
     template_name = 'home/add.html'
 
-class article_update(UpdateView):
+class article_update(LoginRequiredMixin, UpdateView):
     model = Post
     form_class = EditForm
+    login_url = '/users/login/'
     template_name = 'home/edit.html'
 
-class article_delete(DeleteView):
+class article_delete(LoginRequiredMixin, DeleteView):
     model = Post
     template_name = 'home/delete.html'
+    login_url = '/users/login/'
     success_url = reverse_lazy('home')
